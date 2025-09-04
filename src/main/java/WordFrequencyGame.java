@@ -11,7 +11,7 @@ public class WordFrequencyGame {
             return inputStr + " 1";
         } else {
             try {
-                List<Input>  frequencies = countFrequency(words);
+                List<Input>  frequencies = countFrequencies(words);
 
                 frequencies.sort((w1, w2) -> w2.wordCount() - w1.wordCount());
                 return composeOutput(frequencies);
@@ -30,7 +30,7 @@ public class WordFrequencyGame {
         return joiner.toString();
     }
 
-    private List<Input> countFrequency(String[] words) {
+    private List<Input> countFrequencies(String[] words) {
         Map<String, Integer> wordCountMap = java.util.Arrays.stream(words)
             .collect(java.util.stream.Collectors.toMap(
                 word -> word,
