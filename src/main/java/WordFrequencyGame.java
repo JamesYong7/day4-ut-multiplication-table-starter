@@ -33,15 +33,15 @@ public class WordFrequencyGame {
     }
 
     private List<Input> countFrequency(String[] words) {
-        Map<String, Integer> wordCountMap = new HashMap<>();
-        for (String word : words) {
-            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
-        }
-        List<Input> frequencies = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            frequencies.add(new Input(entry.getKey(), entry.getValue()));
-        }
-        return frequencies;
+        Map<String, Integer> wordCountMap = java.util.Arrays.stream(words)
+            .collect(java.util.stream.Collectors.toMap(
+                word -> word,
+                word -> 1,
+                Integer::sum
+            ));
+        return wordCountMap.entrySet().stream()
+            .map(entry -> new Input(entry.getKey(), entry.getValue()))
+            .collect(java.util.stream.Collectors.toList());
     }
 
 
