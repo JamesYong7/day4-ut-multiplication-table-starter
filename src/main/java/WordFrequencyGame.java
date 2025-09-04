@@ -3,7 +3,8 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class WordFrequencyGame {
-    public final static String ANY_SPACE_SEPARATOR = "\\s+";
+    public static final String ANY_SPACE_SEPARATOR = "\\s+";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String inputStr){
         String[] words = inputStr.split(ANY_SPACE_SEPARATOR);
@@ -16,7 +17,7 @@ public class WordFrequencyGame {
                 frequencies.sort((w1, w2) -> w2.wordCount() - w1.wordCount());
                 return composeOutput(frequencies);
             } catch (Exception e) {
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
